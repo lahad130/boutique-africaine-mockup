@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAKAR WEAR — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===================== RESET & ROOT ===================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ocre: #C8842A;
+    --ocre-light: #E8A84A;
+    --ocre-dark: #A06818;
+    --vert: #2D6A4F;
+    --vert-light: #3D8A68;
+    --fond: #FAF8F4;
+    --noir: #1A1603;
+    --gris: #6B6558;
+    --gris-light: #E8E4DC;
+    --blanc: #FFFFFF;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--fond); color: var(--noir); overflow-x: hidden; }
+
+  /* ===================== NAV PAGES ===================== */
+  .page-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: var(--noir); display: flex; align-items: center;
+    justify-content: center; gap: 4px; padding: 8px 16px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .page-nav span { color: rgba(255,255,255,0.4); font-size: 11px; font-family: var(--font-body); margin-right: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7); padding: 5px 14px; border-radius: 20px;
+    font-family: var(--font-body); font-size: 11px; cursor: pointer;
+    transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--ocre); border-color: var(--ocre); color: white; }
+
+  /* ===================== PAGES ===================== */
+  .page { display: none; padding-top: 48px; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ===================== HEADER ===================== */
+  .site-header {
+    position: sticky; top: 48px; z-index: 100;
+    background: rgba(250, 248, 244, 0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gris-light);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+  }
+  .logo {
+    font-family: var(--font-display); font-size: 26px; font-weight: 300;
+    letter-spacing: 4px; color: var(--noir); text-transform: uppercase;
+    text-decoration: none;
+  }
+  .logo span { color: var(--ocre); }
+  .header-nav { display: flex; gap: 32px; list-style: none; }
+  .header-nav a { font-size: 13px; color: var(--gris); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .header-nav a:hover { color: var(--ocre); }
+  .header-actions { display: flex; align-items: center; gap: 20px; }
+  .header-actions a { color: var(--noir); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+  .cart-badge {
+    background: var(--ocre); color: white; border-radius: 50%;
+    width: 18px; height: 18px; font-size: 10px; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    position: relative; height: calc(100vh - 120px); min-height: 600px;
+    display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+  }
+  .hero-left {
+    background: var(--noir); display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 64px; position: relative; overflow: hidden;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image:
+      repeating-linear-gradient(45deg, var(--ocre) 0, var(--ocre) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--ocre) 0, var(--ocre) 1px, transparent 0, transparent 50%);
+    background-size: 24px 24px;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--ocre); margin-bottom: 24px; font-family: var(--font-body); font-weight: 500;
+  }
+  .hero-title {
+    font-family: var(--font-display); font-size: clamp(52px, 6vw, 86px);
+    font-weight: 300; color: white; line-height: 1.05; margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--ocre-light); }
+  .hero-sub {
+    font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;
+    margin-bottom: 40px; max-width: 380px; font-weight: 300;
+  }
+  .hero-cta-group { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--ocre); color: white; padding: 14px 36px;
+    border: none; font-family: var(--font-body); font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    text-decoration: none; display: inline-block; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--ocre-dark); }
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.7); padding: 14px 36px;
+    border: 1px solid rgba(255,255,255,0.25); font-family: var(--font-body);
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--ocre); color: var(--ocre); }
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.9) contrast(1.05);
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #3D2B1A 0%, #6B4423 35%, #C8842A 70%, #2D6A4F 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-placeholder svg { width: 120px; opacity: 0.3; }
+  .hero-badge {
+    position: absolute; bottom: 40px; left: 40px;
+    background: var(--ocre); color: white; padding: 16px 24px;
+    font-family: var(--font-display); font-size: 18px; font-style: italic;
+  }
+  .hero-stat { position: absolute; top: 40px; right: 40px; text-align: right; }
+  .hero-stat-num { font-family: var(--font-display); font-size: 48px; color: white; line-height: 1; }
+  .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ===================== STRIP ===================== */
+  .strip {
+    background: var(--ocre); color: white; text-align: center;
+    padding: 14px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .strip-vert { background: var(--vert); }
+
+  /* ===================== SECTION ===================== */
+  .section { padding: 80px 48px; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px; }
+  .section-title { font-family: var(--font-display); font-size: 42px; font-weight: 300; }
+  .section-title em { font-style: italic; color: var(--ocre); }
+  .section-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); text-decoration: none; border-bottom: 1px solid var(--gris); padding-bottom: 2px; }
+
+  /* ===================== CATEGORIES GRID ===================== */
+  .cat-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+  .cat-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    aspect-ratio: 3/4;
+  }
+  .cat-card:first-child { aspect-ratio: unset; grid-row: span 2; }
+  .cat-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.5s ease;
+  }
+  .cat-card:hover .cat-bg { transform: scale(1.04); }
+  .cat-bg-1 { background: linear-gradient(160deg, #3D2010 0%, #8B4513 50%, #C8842A 100%); }
+  .cat-bg-2 { background: linear-gradient(160deg, #1A3D2B 0%, #2D6A4F 60%, #4A9070 100%); }
+  .cat-bg-3 { background: linear-gradient(160deg, #2A1A3D 0%, #4A3060 60%, #8B6090 100%); }
+  .cat-bg-4 { background: linear-gradient(160deg, #3D3010 0%, #6B5420 60%, #A88030 100%); }
+  .cat-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
+  }
+  .cat-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+  .cat-name { font-family: var(--font-display); font-size: 28px; color: white; font-weight: 300; }
+  .cat-count { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  /* ===================== PRODUCT GRID ===================== */
+  .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .product-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .product-card { cursor: pointer; }
+  .product-img-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--gris-light); margin-bottom: 16px; }
+  .product-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--ocre); color: white; font-size: 10px;
+    letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px;
+  }
+  .product-badge-vert { background: var(--vert); }
+  .product-quick-add {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: var(--noir); color: white; text-align: center;
+    padding: 12px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    transform: translateY(100%); transition: transform 0.25s;
+  }
+  .product-card:hover .product-quick-add { transform: translateY(0); }
+  .product-brand { font-size: 10px; color: var(--gris); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .product-name { font-family: var(--font-display); font-size: 18px; font-weight: 400; margin-bottom: 8px; }
+  .product-price { font-size: 15px; font-weight: 600; color: var(--noir); }
+  .product-price-old { font-size: 13px; color: var(--gris); text-decoration: line-through; margin-left: 8px; font-weight: 400; }
+  .product-colors { display: flex; gap: 6px; margin-top: 8px; }
+  .color-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
+  .color-dot.active { border-color: var(--noir); }
+
+  /* ===================== SIDEBAR LAYOUT ===================== */
+  .shop-layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; padding: 40px 48px; }
+  .sidebar h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--gris-light); }
+  .filter-group { margin-bottom: 28px; }
+  .filter-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; display: block; font-weight: 500; }
+  .filter-options { display: flex; flex-direction: column; gap: 10px; }
+  .filter-option { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--noir); cursor: pointer; }
+  .filter-option input[type="checkbox"] { accent-color: var(--ocre); width: 16px; height: 16px; }
+  .filter-option span.count { color: var(--gris); font-size: 12px; margin-left: auto; }
+  .size-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .size-btn { width: 42px; height: 36px; border: 1px solid var(--gris-light); background: white; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  .size-btn:hover, .size-btn.active { background: var(--noir); color: white; border-color: var(--noir); }
+  .price-range { display: flex; flex-direction: column; gap: 8px; }
+  .price-range input[type="range"] { accent-color: var(--ocre); width: 100%; }
+  .price-range-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--gris); }
+  .shop-content {}
+  .shop-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+  .result-count { font-size: 13px; color: var(--gris); }
+  .sort-select { border: 1px solid var(--gris-light); padding: 8px 16px; font-family: var(--font-body); font-size: 13px; background: white; cursor: pointer; }
+
+  /* ===================== PRODUIT DETAIL ===================== */
+  .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: calc(100vh - 120px); }
+  .product-gallery { position: relative; background: var(--gris-light); }
+  .gallery-main { aspect-ratio: 4/5; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 120px; background: linear-gradient(135deg, #E8DCC8 0%, #D4C4A4 100%); }
+  .gallery-thumbs { display: flex; gap: 8px; padding: 16px; }
+  .gallery-thumb { width: 72px; height: 90px; background: var(--gris-light); cursor: pointer; border: 2px solid transparent; display: flex; align-items: center; justify-content: center; font-size: 24px; transition: border-color 0.2s; }
+  .gallery-thumb.active { border-color: var(--ocre); }
+  .product-info { padding: 64px 48px; display: flex; flex-direction: column; }
+  .breadcrumb { font-size: 12px; color: var(--gris); margin-bottom: 24px; display: flex; gap: 8px; }
+  .breadcrumb span { color: var(--gris-light); }
+  .product-detail-cat { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--ocre); margin-bottom: 12px; font-weight: 500; }
+  .product-detail-name { font-family: var(--font-display); font-size: 42px; font-weight: 300; line-height: 1.1; margin-bottom: 20px; }
+  .product-detail-price { font-size: 28px; font-weight: 600; margin-bottom: 8px; }
+  .product-detail-price-old { font-size: 18px; color: var(--gris); text-decoration: line-through; font-weight: 400; margin-left: 12px; }
+  .product-detail-sub { font-size: 13px; color: var(--vert); font-weight: 500; margin-bottom: 28px; }
+  .divider { height: 1px; background: var(--gris-light); margin: 24px 0; }
+  .option-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); margin-bottom: 12px; display: block; font-weight: 500; }
+  .color-options { display: flex; gap: 12px; margin-bottom: 24px; }
+  .color-swatch { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; }
+  .color-swatch.active { border-color: var(--noir); transform: scale(1.1); }
+  .size-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .size-opt { width: 52px; height: 44px; border: 1px solid var(--gris-light); background: white; font-size: 13px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .size-opt:hover { border-color: var(--noir); }
+  .size-opt.active { background: var(--noir); color: white; border-color: var(--noir); }
+  .size-opt.disabled { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+  .add-to-cart-btn { background: var(--noir); color: white; padding: 18px; width: 100%; border: none; font-family: var(--font-body); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-bottom: 12px; }
+  .add-to-cart-btn:hover { background: var(--ocre); }
+  .wishlist-btn { background: transparent; color: var(--gris); padding: 14px; width: 100%; border: 1px solid var(--gris-light); font-family: var(--font-body); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin-bottom: 32px; }
+  .wishlist-btn:hover { border-color: var(--ocre); color: var(--ocre); }
+  .product-detail-desc { font-size: 14px; line-height: 1.8; color: var(--gris); margin-bottom: 24px; }
+  .delivery-info { background: var(--fond); padding: 16px; border-left: 3px solid var(--vert); }
+  .delivery-info p { font-size: 13px; color: var(--gris); display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .delivery-info p:last-child { margin-bottom: 0; }
+
+  /* ===================== PANIER ===================== */
+  .cart-layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; padding: 40px 48px; }
+  .cart-title { font-family: var(--font-display); font-size: 36px; font-weight: 300; margin-bottom: 8px; }
+  .cart-count-label { font-size: 13px; color: var(--gris); margin-bottom: 32px; }
+  .cart-items { display: flex; flex-direction: column; gap: 0; }
+  .cart-item { display: grid; grid-template-columns: 100px 1fr auto; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--gris-light); align-items: center; }
+  .cart-item-img { aspect-ratio: 3/4; background: var(--gris-light); display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .cart-item-name { font-family: var(--font-display); font-size: 20px; font-weight: 400; margin-bottom: 6px; }
+  .cart-item-meta { font-size: 12px; color: var(--gris); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .qty-control { display: flex; align-items: center; gap: 12px; }
+  .qty-btn { width: 28px; height: 28px; border: 1px solid var(--gris-light); background: white; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .qty-btn:hover { background: var(--noir); color: white; border-color: var(--noir); }
+  .qty-num { font-size: 16px; font-weight: 500; min-width: 20px; text-align: center; }
+  .cart-item-price-col { text-align: right; display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+  .cart-item-price { font-size: 18px; font-weight: 600; }
+  .cart-remove { font-size: 12px; color: var(--gris); text-decoration: underline; cursor: pointer; background: none; border: none; font-family: var(--font-body); }
+  .cart-summary { position: sticky; top: 100px; }
+  .cart-summary-box { background: white; border: 1px solid var(--gris-light); padding: 32px; }
+  .summary-title { font-family: var(--font-display); font-size: 24px; font-weight: 400; margin-bottom: 24px; }
+  .summary-line { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; color: var(--gris); }
+  .summary-line.total { font-size: 18px; font-weight: 600; color: var(--noir); border-top: 1px solid var(--gris-light); padding-top: 16px; margin-top: 16px; }
+  .coupon-input { display: flex; gap: 0; margin-bottom: 20px; }
+  .coupon-input input { flex: 1; padding: 12px 16px; border: 1px solid var(--gris-light); font-family: var(--font-body); font-size: 13px; outline: none; }
+  .coupon-input button { padding: 12px 20px; background: var(--noir); color: white; border: none; font-family: var(--font-body); font-size: 12px; letter-spacing: 1px; cursor: pointer; }
+  .checkout-btn { width: 100%; padding: 18px; background: var(--ocre); color: white; border: none; font-family: var(--font-body); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-bottom: 16px; }
+  .checkout-btn:hover { background: var(--ocre-dark); }
+  .payment-icons { display: flex; gap: 8px; justify-content: center; align-items: center; }
+  .pay-icon { background: var(--fond); border: 1px solid var(--gris-light); padding: 6px 12px; font-size: 11px; font-weight: 600; letter-spacing: 1px; border-radius: 4px; }
+  .pay-icon.wave { background: #1D8BF8; color: white; border-color: #1D8BF8; }
+  .pay-icon.orange { background: #FF6600; color: white; border-color: #FF6600; }
+  .pay-icon.free { background: #00C853; color: white; border-color: #00C853; }
+
+  /* ===================== CHECKOUT ===================== */
+  .checkout-layout { display: grid; grid-template-columns: 1fr 400px; gap: 0; min-height: calc(100vh - 120px); }
+  .checkout-form-side { padding: 48px; border-right: 1px solid var(--gris-light); }
+  .checkout-summary-side { padding: 48px; background: white; }
+  .checkout-steps { display: flex; gap: 0; margin-bottom: 40px; }
+  .checkout-step { flex: 1; display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 2px solid var(--gris-light); position: relative; }
+  .checkout-step.active { border-bottom-color: var(--ocre); }
+  .checkout-step.done { border-bottom-color: var(--vert); }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--gris-light); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; flex-shrink: 0; }
+  .checkout-step.active .step-num { background: var(--ocre); border-color: var(--ocre); color: white; }
+  .checkout-step.done .step-num { background: var(--vert); border-color: var(--vert); color: white; }
+  .step-label { font-size: 12px; color: var(--gris); letter-spacing: 1px; text-transform: uppercase; }
+  .checkout-step.active .step-label { color: var(--noir); font-weight: 500; }
+  .form-section-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .form-group label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); font-weight: 500; }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 12px 16px; border: 1px solid var(--gris-light); background: white;
+    font-family: var(--font-body); font-size: 14px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--ocre); }
+  .phone-input { display: flex; }
+  .phone-prefix { padding: 12px 14px; background: var(--fond); border: 1px solid var(--gris-light); border-right: none; font-size: 14px; color: var(--gris); white-space: nowrap; }
+  .phone-field { flex: 1; padding: 12px 16px; border: 1px solid var(--gris-light); font-family: var(--font-body); font-size: 14px; outline: none; }
+  .payment-methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+  .payment-method {
+    border: 2px solid var(--gris-light); padding: 16px 20px;
+    display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s;
+  }
+  .payment-method.selected { border-color: var(--ocre); background: #FFF8F0; }
+  .payment-method input[type="radio"] { accent-color: var(--ocre); width: 18px; height: 18px; }
+  .payment-method-logo { font-weight: 700; font-size: 14px; padding: 4px 10px; border-radius: 4px; }
+  .payment-method-logo.wave { background: #1D8BF8; color: white; }
+  .payment-method-logo.orange { background: #FF6600; color: white; }
+  .payment-method-logo.free { background: #00C853; color: white; }
+  .payment-method-info { flex: 1; }
+  .payment-method-name { font-size: 14px; font-weight: 500; }
+  .payment-method-desc { font-size: 12px; color: var(--gris); }
+  .place-order-btn { width: 100%; padding: 18px; background: var(--ocre); color: white; border: none; font-family: var(--font-body); font-size: 14px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .place-order-btn:hover { background: var(--ocre-dark); }
+  .checkout-order-item { display: flex; gap: 16px; align-items: center; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--gris-light); }
+  .checkout-order-img { width: 64px; height: 80px; background: var(--gris-light); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; position: relative; }
+  .checkout-order-badge { position: absolute; top: -6px; right: -6px; background: var(--gris); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+  .checkout-order-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .checkout-order-meta { font-size: 12px; color: var(--gris); }
+  .checkout-order-price { margin-left: auto; font-size: 14px; font-weight: 600; }
+
+  /* ===================== ADMIN DASHBOARD ===================== */
+  .admin-layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 48px); }
+  .admin-sidebar { background: var(--noir); padding: 32px 0; }
+  .admin-logo { font-family: var(--font-display); font-size: 18px; color: white; padding: 0 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; letter-spacing: 2px; text-transform: uppercase; }
+  .admin-logo span { color: var(--ocre); }
+  .admin-nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 24px; font-size: 13px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.2s; text-decoration: none; letter-spacing: 0.5px; }
+  .admin-nav-item:hover, .admin-nav-item.active { background: rgba(255,255,255,0.06); color: white; }
+  .admin-nav-item.active { border-right: 2px solid var(--ocre); color: var(--ocre-light); }
+  .admin-nav-section { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.2); padding: 16px 24px 8px; text-transform: uppercase; }
+  .admin-content { background: #F4F2EE; padding: 36px; overflow-y: auto; }
+  .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+  .admin-title { font-family: var(--font-display); font-size: 32px; font-weight: 300; }
+  .admin-header-actions { display: flex; gap: 12px; }
+  .btn-admin { padding: 10px 20px; background: var(--ocre); color: white; border: none; font-family: var(--font-body); font-size: 12px; letter-spacing: 1px; cursor: pointer; border-radius: 2px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .stat-card { background: white; padding: 24px; border-radius: 2px; border-left: 3px solid var(--gris-light); }
+  .stat-card.ocre { border-left-color: var(--ocre); }
+  .stat-card.vert { border-left-color: var(--vert); }
+  .stat-card.bleu { border-left-color: #2D4A6A; }
+  .stat-card.rouge { border-left-color: #8B2020; }
+  .stat-label { font-size: 11px; color: var(--gris); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .stat-value { font-family: var(--font-display); font-size: 32px; font-weight: 400; margin-bottom: 4px; }
+  .stat-change { font-size: 12px; }
+  .stat-change.up { color: var(--vert); }
+  .stat-change.down { color: #C83030; }
+  .admin-table-card { background: white; border-radius: 2px; overflow: hidden; }
+  .admin-table-header { padding: 20px 24px; border-bottom: 1px solid var(--gris-light); display: flex; align-items: center; justify-content: space-between; }
+  .admin-table-title { font-size: 15px; font-weight: 500; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 12px 24px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); background: #FAF8F4; border-bottom: 1px solid var(--gris-light); }
+  td { padding: 14px 24px; font-size: 13px; border-bottom: 1px solid #F0EDE8; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FAF8F4; }
+  .status-badge { padding: 4px 10px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; border-radius: 2px; }
+  .status-new { background: #EBF5FF; color: #1D6FA8; }
+  .status-processing { background: #FFF8E8; color: #A06818; }
+  .status-shipped { background: #EDFAF3; color: #1D7A4A; }
+  .status-delivered { background: #E8F0E8; color: #2D6A4F; }
+  .status-cancelled { background: #FAE8E8; color: #8B2020; }
+
+  /* ===================== FOOTER ===================== */
+  footer { background: var(--noir); color: white; padding: 64px 48px 32px; margin-top: 0; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .logo { display: block; margin-bottom: 16px; }
+  .footer-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 240px; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ocre); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .social-links { display: flex; gap: 16px; }
+  .social-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; }
+  .social-links a:hover { color: var(--ocre); }
+
+  /* ===================== ACCENTS ===================== */
+  .tag { display: inline-block; padding: 4px 10px; background: var(--fond); border: 1px solid var(--gris-light); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gris); }
+  .star { color: var(--ocre); }
+  .review-stars { display: flex; gap: 2px; margin-bottom: 4px; }
+  .section-bg-dark { background: var(--noir); color: white; }
+  .section-bg-ocre { background: var(--ocre); color: white; }
+
+  /* ===================== ANIMATIONS ===================== */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .page.active > * { animation: fadeIn 0.3s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- NAV PAGES MOCKUP -->
+<nav class="page-nav">
+  <span>PAGES →</span>
+  <button class="nav-btn active" onclick="showPage('accueil')">Accueil</button>
+  <button class="nav-btn" onclick="showPage('catalogue')">Catalogue</button>
+  <button class="nav-btn" onclick="showPage('produit')">Produit</button>
+  <button class="nav-btn" onclick="showPage('panier')">Panier</button>
+  <button class="nav-btn" onclick="showPage('checkout')">Checkout</button>
+  <button class="nav-btn" onclick="showPage('admin')">Admin</button>
+</nav>
+
+<!-- ==================== PAGE ACCUEIL ==================== -->
+<div class="page active" id="page-accueil">
+
+  <header class="site-header">
+    <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+    <ul class="header-nav">
+      <li><a href="#">Femme</a></li>
+      <li><a href="#">Homme</a></li>
+      <li><a href="#">Chaussures</a></li>
+      <li><a href="#">Accessoires</a></li>
+      <li><a href="#">Nouveautés</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="#">🔍</a>
+      <a href="#">Mon compte</a>
+      <a href="#" onclick="showPage('panier')">
+        🛍 Panier <span class="cart-badge">3</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-pattern"></div>
+      <p class="hero-eyebrow">Nouvelle Collection 2025</p>
+      <h1 class="hero-title">L'Élégance<br><em>Africaine</em><br>Redéfinie</h1>
+      <p class="hero-sub">Boubous, robes wax, chaussures artisanales — livrés à votre porte à Dakar en 24h.</p>
+      <div class="hero-cta-group">
+        <a href="#" class="btn-primary" onclick="showPage('catalogue')">Découvrir la collection</a>
+        <a href="#" class="btn-outline">Nos lookbooks</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-placeholder">
+        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="10" width="60" height="80" rx="2" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <circle cx="50" cy="30" r="12" fill="rgba(255,255,255,0.2)"/>
+          <rect x="30" y="50" width="40" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <rect x="35" y="60" width="30" height="3" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <rect x="30" y="75" width="40" height="10" rx="1" fill="rgba(200,132,42,0.6)"/>
+        </svg>
+      </div>
+      <div class="hero-badge">Collection Wax 2025</div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="color:var(--ocre-light);">247</div>
+        <div class="hero-stat-label">Modèles disponibles</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">🚚 Livraison gratuite à Dakar dès 25 000 FCFA · 📱 Paiement Wave, Orange Money, Free Money</div>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Nos <em>Collections</em></h2>
+      <a href="#" class="section-link" onclick="showPage('catalogue')">Voir tout</a>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <div class="cat-bg cat-bg-1" style="height:100%;min-height:400px;"></div>
+        <div class="cat-overlay">
+          <span class="cat-label">Pour elle</span>
+          <div class="cat-name">Vêtements Femme</div>
+          <div class="cat-count">124 modèles</div>
+        </div>
+      </div>
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <div class="cat-bg cat-bg-2" style="height:100%;min-height:190px;"></div>
+        <div class="cat-overlay">
+          <span class="cat-label">Pour lui</span>
+          <div class="cat-name" style="font-size:22px;">Vêtements Homme</div>
+          <div class="cat-count">87 modèles</div>
+        </div>
+      </div>
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <div class="cat-bg cat-bg-3" style="height:100%;min-height:190px;"></div>
+        <div class="cat-overlay">
+          <span class="cat-label">Art artisanal</span>
+          <div class="cat-name" style="font-size:22px;">Accessoires</div>
+          <div class="cat-count">36 pièces</div>
+        </div>
+      </div>
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <div class="cat-bg cat-bg-4" style="height:100%;min-height:190px;"></div>
+        <div class="cat-overlay">
+          <span class="cat-label">Cuir artisanal</span>
+          <div class="cat-name" style="font-size:22px;">Chaussures</div>
+          <div class="cat-count">52 modèles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-header">
+      <h2 class="section-title">Coups de <em>Cœur</em></h2>
+      <a href="#" class="section-link">Voir les nouveautés</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card" onclick="showPage('produit')">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background:linear-gradient(135deg,#E8D4B0,#C8A870);">👘</div>
+          <span class="product-badge">Nouveau</span>
+          <div class="product-quick-add">+ Ajouter au panier</div>
+        </div>
+        <div class="product-brand">Vêtements Femme</div>
+        <div class="product-name">Robe Wax Ankara</div>
+        <div>
+          <span class="product-price">18 500 FCFA</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#C8842A;"></div>
+          <div class="color-dot" style="background:#2D6A4F;"></div>
+          <div class="color-dot" style="background:#1A1A1A;"></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showPage('produit')">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background:linear-gradient(135deg,#D4E0C8,#A0C070);">🥻</div>
+          <span class="product-badge product-badge-vert">−20%</span>
+          <div class="product-quick-add">+ Ajouter au panier</div>
+        </div>
+        <div class="product-brand">Vêtements Homme</div>
+        <div class="product-name">Grand Boubou Bazin</div>
+        <div>
+          <span class="product-price">28 000 FCFA</span>
+          <span class="product-price-old">35 000 FCFA</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#E8E4DC;border-color:#999;"></div>
+          <div class="color-dot" style="background:#1D4ED8;"></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showPage('produit')">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background:linear-gradient(135deg,#D4C0A8,#B89060);">👡</div>
+          <div class="product-quick-add">+ Ajouter au panier</div>
+        </div>
+        <div class="product-brand">Chaussures Femme</div>
+        <div class="product-name">Sandales Cuir Artisanal</div>
+        <div>
+          <span class="product-price">15 000 FCFA</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#8B6040;"></div>
+          <div class="color-dot" style="background:#1A1A1A;"></div>
+          <div class="color-dot" style="background:#C8842A;"></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showPage('produit')">
+        <div class="product-img-wrap">
+          <div class="product-img-placeholder" style="background:linear-gradient(135deg,#C8D4E0,#8090B0);">👜</div>
+          <span class="product-badge">Bestseller</span>
+          <div class="product-quick-add">+ Ajouter au panier</div>
+        </div>
+        <div class="product-brand">Accessoires</div>
+        <div class="product-name">Sac Tissé Raphia</div>
+        <div>
+          <span class="product-price">12 000 FCFA</span>
+        </div>
+        <div class="product-colors">
+          <div class="color-dot active" style="background:#C8A830;"></div>
+          <div class="color-dot" style="background:#8B4513;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STRIP -->
+  <section style="background:var(--noir);padding:64px 48px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;">
+    <div>
+      <p style="font-size:11px;letter-spacing:4px;color:var(--ocre);text-transform:uppercase;margin-bottom:16px;">Notre engagement</p>
+      <h2 style="font-family:var(--font-display);font-size:42px;font-weight:300;color:white;line-height:1.2;">Mode africaine<br><em style="font-style:italic;color:var(--ocre-light);">authentique</em><br>& responsable</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div style="border-left:2px solid var(--ocre);padding-left:20px;">
+        <div style="font-family:var(--font-display);font-size:36px;color:white;">100%</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;">Artisanat local</div>
+      </div>
+      <div style="border-left:2px solid var(--vert);padding-left:20px;">
+        <div style="font-family:var(--font-display);font-size:36px;color:white;">24h</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;">Livraison Dakar</div>
+      </div>
+      <div style="border-left:2px solid rgba(255,255,255,0.2);padding-left:20px;">
+        <div style="font-family:var(--font-display);font-size:36px;color:white;">3</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;">Modes de paiement</div>
+      </div>
+      <div style="border-left:2px solid rgba(255,255,255,0.2);padding-left:20px;">
+        <div style="font-family:var(--font-display);font-size:36px;color:white;">2 000+</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;">Clients satisfaits</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+        <p class="footer-desc">Mode africaine authentique, livrée à Dakar et dans tout le Sénégal. Vêtements, chaussures et accessoires artisanaux.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Boutique</h4>
+        <ul>
+          <li><a href="#">Femme</a></li>
+          <li><a href="#">Homme</a></li>
+          <li><a href="#">Chaussures</a></li>
+          <li><a href="#">Accessoires</a></li>
+          <li><a href="#">Soldes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="#">Livraison</a></li>
+          <li><a href="#">Retours</a></li>
+          <li><a href="#">Guide des tailles</a></li>
+          <li><a href="#">Paiement</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">📍 Dakar, Sénégal</a></li>
+          <li><a href="#">📱 +221 77 000 00 00</a></li>
+          <li><a href="#">✉ contact@dakarwear.sn</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DAKARWEAR. Tous droits réservés.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ==================== PAGE CATALOGUE ==================== -->
+<div class="page" id="page-catalogue">
+  <header class="site-header">
+    <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+    <ul class="header-nav">
+      <li><a href="#" style="color:var(--ocre);">Femme</a></li>
+      <li><a href="#">Homme</a></li>
+      <li><a href="#">Chaussures</a></li>
+      <li><a href="#">Accessoires</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="#">🔍</a>
+      <a href="#">Mon compte</a>
+      <a href="#" onclick="showPage('panier')">🛍 <span class="cart-badge">3</span></a>
+    </div>
+  </header>
+
+  <div style="padding:20px 48px;border-bottom:1px solid var(--gris-light);font-size:12px;color:var(--gris);">
+    Accueil &nbsp;/&nbsp; <span style="color:var(--noir);">Vêtements Femme</span>
+  </div>
+
+  <div class="shop-layout">
+    <!-- SIDEBAR FILTRES -->
+    <aside class="sidebar">
+      <h3>Filtres</h3>
+
+      <div class="filter-group">
+        <span class="filter-label">Catégorie</span>
+        <div class="filter-options">
+          <label class="filter-option"><input type="checkbox" checked> Vêtements Femme <span class="count">124</span></label>
+          <label class="filter-option"><input type="checkbox"> Vêtements Homme <span class="count">87</span></label>
+          <label class="filter-option"><input type="checkbox"> Chaussures Femme <span class="count">31</span></label>
+          <label class="filter-option"><input type="checkbox"> Chaussures Homme <span class="count">21</span></label>
+          <label class="filter-option"><input type="checkbox"> Accessoires <span class="count">36</span></label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Prix (FCFA)</span>
+        <div class="price-range">
+          <input type="range" min="0" max="100000" value="50000">
+          <div class="price-range-labels"><span>0 FCFA</span><span>50 000 FCFA</span></div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Taille</span>
+        <div class="size-grid">
+          <button class="size-btn">XS</button>
+          <button class="size-btn active">S</button>
+          <button class="size-btn active">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+          <button class="size-btn">XXL</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Couleur</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="color-dot active" style="background:#C8842A;width:24px;height:24px;" title="Ocre"></div>
+          <div class="color-dot" style="background:#2D6A4F;width:24px;height:24px;" title="Vert"></div>
+          <div class="color-dot" style="background:#1A1A1A;width:24px;height:24px;" title="Noir"></div>
+          <div class="color-dot" style="background:#F5F0E8;width:24px;height:24px;border-color:#CCC;" title="Beige"></div>
+          <div class="color-dot" style="background:#1D4ED8;width:24px;height:24px;" title="Bleu"></div>
+          <div class="color-dot" style="background:#DC2626;width:24px;height:24px;" title="Rouge"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS -->
+    <div class="shop-content">
+      <div class="shop-toolbar">
+        <span class="result-count">124 résultats</span>
+        <select class="sort-select">
+          <option>Trier : Nouveautés</option>
+          <option>Prix croissant</option>
+          <option>Prix décroissant</option>
+          <option>Meilleures ventes</option>
+        </select>
+      </div>
+      <div class="product-grid product-grid-3">
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#E8D4B0,#C8A870);">👘</div>
+            <span class="product-badge">Nouveau</span>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Robe</div>
+          <div class="product-name">Robe Wax Ankara</div>
+          <div><span class="product-price">18 500 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#C8842A;"></div>
+            <div class="color-dot" style="background:#2D6A4F;"></div>
+            <div class="color-dot" style="background:#1A1A1A;"></div>
+          </div>
+        </div>
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#D4E0C8,#A0C070);">🥻</div>
+            <span class="product-badge product-badge-vert">−20%</span>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Ensemble</div>
+          <div class="product-name">Ensemble 2 pièces Wax</div>
+          <div><span class="product-price">22 400 FCFA</span><span class="product-price-old">28 000 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#2D6A4F;"></div>
+            <div class="color-dot" style="background:#C8842A;"></div>
+          </div>
+        </div>
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#E0D4C8,#B09080);">👗</div>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Boubou</div>
+          <div class="product-name">Boubou Brodé Femme</div>
+          <div><span class="product-price">32 000 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#E8E4DC;border-color:#AAA;"></div>
+            <div class="color-dot" style="background:#C8842A;"></div>
+          </div>
+        </div>
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#C8D0E0,#8090B0);">🧣</div>
+            <span class="product-badge">Bestseller</span>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Chemise</div>
+          <div class="product-name">Chemise Wax Manches Courtes</div>
+          <div><span class="product-price">9 500 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#1D4ED8;"></div>
+            <div class="color-dot" style="background:#C8842A;"></div>
+            <div class="color-dot" style="background:#1A1A1A;"></div>
+          </div>
+        </div>
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#E8C8B0,#C09060);">👒</div>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Robe</div>
+          <div class="product-name">Robe Longue Imprimée</div>
+          <div><span class="product-price">24 000 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#8B2020;"></div>
+            <div class="color-dot" style="background:#1A1A1A;"></div>
+          </div>
+        </div>
+        <div class="product-card" onclick="showPage('produit')">
+          <div class="product-img-wrap">
+            <div class="product-img-placeholder" style="background:linear-gradient(135deg,#D4C8E0,#A090C0);">🪭</div>
+            <div class="product-quick-add">+ Ajouter au panier</div>
+          </div>
+          <div class="product-brand">Tenue</div>
+          <div class="product-name">Tenue Cérémonie Kente</div>
+          <div><span class="product-price">45 000 FCFA</span></div>
+          <div class="product-colors">
+            <div class="color-dot active" style="background:#C8A020;"></div>
+            <div class="color-dot" style="background:#8B2020;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE PRODUIT ==================== -->
+<div class="page" id="page-produit">
+  <header class="site-header">
+    <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+    <ul class="header-nav">
+      <li><a href="#">Femme</a></li><li><a href="#">Homme</a></li>
+      <li><a href="#">Chaussures</a></li><li><a href="#">Accessoires</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="#">🔍</a><a href="#">Mon compte</a>
+      <a href="#" onclick="showPage('panier')">🛍 <span class="cart-badge">3</span></a>
+    </div>
+  </header>
+
+  <div class="product-detail">
+    <div class="product-gallery">
+      <div class="gallery-main">👘</div>
+      <div class="gallery-thumbs">
+        <div class="gallery-thumb active">👘</div>
+        <div class="gallery-thumb">🔷</div>
+        <div class="gallery-thumb">📐</div>
+        <div class="gallery-thumb">✨</div>
+      </div>
+    </div>
+
+    <div class="product-info">
+      <div class="breadcrumb">Accueil <span>/</span> Femme <span>/</span> Robes <span>/</span> Robe Wax Ankara</div>
+      <div class="product-detail-cat">Vêtements Femme — Robe</div>
+      <h1 class="product-detail-name">Robe Wax Ankara<br>Coupe Droite</h1>
+      <div style="display:flex;align-items:baseline;gap:12px;">
+        <span class="product-detail-price">18 500 FCFA</span>
+      </div>
+      <div class="product-detail-sub">✓ En stock — Livraison sous 24h à Dakar</div>
+
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span style="color:var(--gris-light);">★</span>
+        <span style="font-size:12px;color:var(--gris);margin-left:8px;">4.2 (28 avis)</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <span class="option-label">Couleur — <strong>Wax Ocre</strong></span>
+      <div class="color-options">
+        <div class="color-swatch active" style="background:#C8842A;" title="Wax Ocre"></div>
+        <div class="color-swatch" style="background:#2D6A4F;" title="Wax Vert"></div>
+        <div class="color-swatch" style="background:#1A1A1A;" title="Noir"></div>
+        <div class="color-swatch" style="background:#1D4ED8;" title="Bleu Indigo"></div>
+      </div>
+
+      <span class="option-label">Taille — <strong>M</strong> · <a href="#" style="color:var(--ocre);text-decoration:none;font-size:11px;">Guide des tailles</a></span>
+      <div class="size-options">
+        <div class="size-opt disabled">XS</div>
+        <div class="size-opt">S</div>
+        <div class="size-opt active">M</div>
+        <div class="size-opt">L</div>
+        <div class="size-opt">XL</div>
+        <div class="size-opt disabled">XXL</div>
+      </div>
+
+      <button class="add-to-cart-btn" onclick="showPage('panier')">Ajouter au panier</button>
+      <button class="wishlist-btn">♡ Sauvegarder dans mes favoris</button>
+
+      <p class="product-detail-desc">
+        Robe en tissu wax 100% coton, coupe droite élégante. Imprimé Ankara authentique, teintures naturelles résistantes. Couture artisanale par nos ateliers de Dakar. Idéale pour les cérémonies, fêtes et occasions spéciales.
+      </p>
+
+      <div class="delivery-info">
+        <p>🚚 Livraison à Dakar en 24-48h — <strong>1 000 FCFA</strong></p>
+        <p>✅ Retours sous 7 jours</p>
+        <p>📱 Paiement Wave, Orange Money, Free Money</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Vous aimerez <em>aussi</em></h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-card" onclick="showPage('produit')"><div class="product-img-wrap"><div class="product-img-placeholder" style="background:linear-gradient(135deg,#D4E0C8,#A0C070);">🥻</div><div class="product-quick-add">+ Ajouter au panier</div></div><div class="product-name">Ensemble 2 pièces</div><div class="product-price">22 400 FCFA</div></div>
+      <div class="product-card" onclick="showPage('produit')"><div class="product-img-wrap"><div class="product-img-placeholder" style="background:linear-gradient(135deg,#E0D4C8,#B09080);">👗</div><div class="product-quick-add">+ Ajouter au panier</div></div><div class="product-name">Boubou Brodé</div><div class="product-price">32 000 FCFA</div></div>
+      <div class="product-card" onclick="showPage('produit')"><div class="product-img-wrap"><div class="product-img-placeholder" style="background:linear-gradient(135deg,#C8D0E0,#8090B0);">🧣</div><div class="product-quick-add">+ Ajouter au panier</div></div><div class="product-name">Chemise Wax</div><div class="product-price">9 500 FCFA</div></div>
+      <div class="product-card" onclick="showPage('produit')"><div class="product-img-wrap"><div class="product-img-placeholder" style="background:linear-gradient(135deg,#E8C8B0,#C09060);">👡</div><div class="product-quick-add">+ Ajouter au panier</div></div><div class="product-name">Sandales Artisanales</div><div class="product-price">15 000 FCFA</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== PAGE PANIER ==================== -->
+<div class="page" id="page-panier">
+  <header class="site-header">
+    <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+    <ul class="header-nav"><li><a href="#">Femme</a></li><li><a href="#">Homme</a></li><li><a href="#">Chaussures</a></li></ul>
+    <div class="header-actions"><a href="#">Mon compte</a><a href="#">🛍 <span class="cart-badge">3</span></a></div>
+  </header>
+
+  <div class="cart-layout">
+    <div>
+      <h1 class="cart-title">Mon Panier</h1>
+      <p class="cart-count-label">3 articles</p>
+
+      <div class="cart-items">
+        <div class="cart-item">
+          <div class="cart-item-img">👘</div>
+          <div>
+            <div class="cart-item-name">Robe Wax Ankara</div>
+            <div class="cart-item-meta">Couleur : Ocre · Taille : M</div>
+            <div class="qty-control">
+              <button class="qty-btn">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price-col">
+            <span class="cart-item-price">18 500 FCFA</span>
+            <button class="cart-remove">Retirer</button>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <div class="cart-item-img">👡</div>
+          <div>
+            <div class="cart-item-name">Sandales Cuir Artisanal</div>
+            <div class="cart-item-meta">Couleur : Marron · Taille : 38</div>
+            <div class="qty-control">
+              <button class="qty-btn">−</button>
+              <span class="qty-num">1</span>
+              <button class="qty-btn">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price-col">
+            <span class="cart-item-price">15 000 FCFA</span>
+            <button class="cart-remove">Retirer</button>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <div class="cart-item-img">👜</div>
+          <div>
+            <div class="cart-item-name">Sac Tissé Raphia</div>
+            <div class="cart-item-meta">Couleur : Naturel</div>
+            <div class="qty-control">
+              <button class="qty-btn">−</button>
+              <span class="qty-num">2</span>
+              <button class="qty-btn">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price-col">
+            <span class="cart-item-price">24 000 FCFA</span>
+            <button class="cart-remove">Retirer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="cart-summary-box">
+        <h2 class="summary-title">Résumé</h2>
+        <div class="coupon-input">
+          <input type="text" placeholder="Code promo">
+          <button>Appliquer</button>
+        </div>
+        <div class="summary-line"><span>Sous-total</span><span>57 500 FCFA</span></div>
+        <div class="summary-line"><span>Livraison (Dakar Centre)</span><span>1 000 FCFA</span></div>
+        <div class="summary-line"><span>Réduction</span><span style="color:var(--vert);">− 0 FCFA</span></div>
+        <div class="summary-line total"><span>Total</span><span>58 500 FCFA</span></div>
+        <button class="checkout-btn" onclick="showPage('checkout')">Passer la commande →</button>
+        <div style="text-align:center;margin-bottom:12px;font-size:12px;color:var(--gris);">Paiement sécurisé via</div>
+        <div class="payment-icons">
+          <span class="pay-icon wave">WAVE</span>
+          <span class="pay-icon orange">ORANGE</span>
+          <span class="pay-icon free">FREE</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:16px;background:white;border:1px solid var(--gris-light);display:flex;align-items:center;gap:12px;">
+        <span style="font-size:20px;">🚚</span>
+        <div>
+          <div style="font-size:13px;font-weight:500;">Livraison gratuite</div>
+          <div style="font-size:12px;color:var(--gris);">Plus que <strong>16 500 FCFA</strong> d'achats</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE CHECKOUT ==================== -->
+<div class="page" id="page-checkout">
+  <header class="site-header">
+    <a href="#" class="logo">DAKAR<span>WEAR</span></a>
+    <div style="font-size:13px;color:var(--gris);">Paiement sécurisé 🔒</div>
+  </header>
+
+  <div class="checkout-layout">
+    <div class="checkout-form-side">
+      <!-- STEPS -->
+      <div class="checkout-steps">
+        <div class="checkout-step done">
+          <div class="step-num">✓</div>
+          <span class="step-label">Contact</span>
+        </div>
+        <div class="checkout-step active">
+          <div class="step-num">2</div>
+          <span class="step-label">Livraison</span>
+        </div>
+        <div class="checkout-step">
+          <div class="step-num">3</div>
+          <span class="step-label">Paiement</span>
+        </div>
+      </div>
+
+      <!-- SECTION 1 CONTACT (done) -->
+      <div style="background:#F0F9F4;border:1px solid #C0E0CC;padding:16px 20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--vert);margin-bottom:4px;">Contact</div>
+          <div style="font-size:14px;">aminata.diallo@gmail.com · +221 77 234 56 78</div>
+        </div>
+        <a href="#" style="font-size:12px;color:var(--gris);text-decoration:underline;">Modifier</a>
+      </div>
+
+      <!-- SECTION 2 LIVRAISON -->
+      <h2 class="form-section-title">Adresse de livraison</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" value="Aminata" placeholder="Votre prénom">
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" value="Diallo" placeholder="Votre nom">
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label>Quartier / Zone</label>
+          <input type="text" value="Plateau" placeholder="Ex: Plateau, Médina, Pikine...">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ville</label>
+          <select>
+            <option selected>Dakar</option>
+            <option>Thiès</option>
+            <option>Saint-Louis</option>
+            <option>Ziguinchor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Zone de livraison</label>
+          <select>
+            <option selected>Centre Dakar — 1 000 FCFA</option>
+            <option>Banlieue Proche — 1 500 FCFA</option>
+            <option>Pikine/Guédiawaye — 2 000 FCFA</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Repère / Indication</label>
+        <input type="text" placeholder="Ex: Près de la mosquée, face à la pharmacie..." value="Immeuble Sahel, 3e étage, porte bleue">
+      </div>
+
+      <div class="form-group">
+        <label>Téléphone de livraison</label>
+        <div class="phone-input">
+          <span class="phone-prefix">🇸🇳 +221</span>
+          <input class="phone-field" type="tel" value="77 234 56 78" placeholder="77 000 00 00">
+        </div>
+      </div>
+
+      <!-- PAIEMENT -->
+      <div class="divider"></div>
+      <h2 class="form-section-title">Mode de paiement</h2>
+
+      <div class="payment-methods">
+        <div class="payment-method selected">
+          <input type="radio" name="payment" checked>
+          <span class="payment-method-logo wave">WAVE</span>
+          <div class="payment-method-info">
+            <div class="payment-method-name">Wave</div>
+            <div class="payment-method-desc">Paiement instantané via Wave Sénégal</div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <input type="radio" name="payment">
+          <span class="payment-method-logo orange">ORANGE</span>
+          <div class="payment-method-info">
+            <div class="payment-method-name">Orange Money</div>
+            <div class="payment-method-desc">Paiement via Orange Money</div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <input type="radio" name="payment">
+          <span class="payment-method-logo free">FREE</span>
+          <div class="payment-method-info">
+            <div class="payment-method-name">Free Money</div>
+            <div class="payment-method-desc">Paiement via Free Money</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="place-order-btn">Confirmer et payer — 58 500 FCFA</button>
+      <p style="text-align:center;font-size:12px;color:var(--gris);margin-top:12px;">🔒 Paiement sécurisé · Vos données sont protégées</p>
+    </div>
+
+    <!-- RÉSUMÉ COMMANDE -->
+    <div class="checkout-summary-side">
+      <h2 class="summary-title">Votre commande</h2>
+
+      <div class="checkout-order-item">
+        <div class="checkout-order-img">👘<span class="checkout-order-badge">1</span></div>
+        <div>
+          <div class="checkout-order-name">Robe Wax Ankara</div>
+          <div class="checkout-order-meta">Ocre · Taille M</div>
+        </div>
+        <span class="checkout-order-price">18 500 FCFA</span>
+      </div>
+      <div class="checkout-order-item">
+        <div class="checkout-order-img">👡<span class="checkout-order-badge">1</span></div>
+        <div>
+          <div class="checkout-order-name">Sandales Cuir</div>
+          <div class="checkout-order-meta">Marron · T.38</div>
+        </div>
+        <span class="checkout-order-price">15 000 FCFA</span>
+      </div>
+      <div class="checkout-order-item">
+        <div class="checkout-order-img">👜<span class="checkout-order-badge">2</span></div>
+        <div>
+          <div class="checkout-order-name">Sac Tissé Raphia</div>
+          <div class="checkout-order-meta">Naturel</div>
+        </div>
+        <span class="checkout-order-price">24 000 FCFA</span>
+      </div>
+
+      <div class="divider"></div>
+      <div class="summary-line"><span>Sous-total</span><span>57 500 FCFA</span></div>
+      <div class="summary-line"><span>Livraison</span><span>1 000 FCFA</span></div>
+      <div class="summary-line total"><span>Total</span><span>58 500 FCFA</span></div>
+
+      <div style="margin-top:24px;padding:16px;background:var(--fond);border-left:3px solid var(--vert);">
+        <div style="font-size:12px;color:var(--gris);margin-bottom:4px;">📦 Livraison estimée</div>
+        <div style="font-size:14px;font-weight:500;">Demain avant 18h — Dakar Plateau</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE ADMIN ==================== -->
+<div class="page" id="page-admin">
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="admin-logo">DAKAR<span>WEAR</span></div>
+      <div class="admin-nav-section">Principal</div>
+      <a class="admin-nav-item active">📊 Tableau de bord</a>
+      <a class="admin-nav-item">📦 Commandes <span style="background:var(--ocre);color:white;font-size:10px;padding:2px 6px;border-radius:8px;margin-left:auto;">12</span></a>
+      <a class="admin-nav-item">👗 Produits</a>
+      <a class="admin-nav-item">👥 Clients</a>
+      <div class="admin-nav-section">Gestion</div>
+      <a class="admin-nav-item">📂 Catégories</a>
+      <a class="admin-nav-item">🏷 Codes promo</a>
+      <a class="admin-nav-item">📊 Statistiques</a>
+      <div class="admin-nav-section">Compte</div>
+      <a class="admin-nav-item">⚙️ Paramètres</a>
+      <a class="admin-nav-item">🚪 Déconnexion</a>
+    </div>
+
+    <div class="admin-content">
+      <div class="admin-header">
+        <h1 class="admin-title">Tableau de bord</h1>
+        <div class="admin-header-actions">
+          <span style="font-size:13px;color:var(--gris);">Dim. 24 mai 2025</span>
+          <button class="btn-admin">+ Nouveau produit</button>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card ocre">
+          <div class="stat-label">Ventes aujourd'hui</div>
+          <div class="stat-value">187 500</div>
+          <div style="font-size:11px;color:var(--gris);">FCFA · <span class="stat-change up">↑ +12%</span></div>
+        </div>
+        <div class="stat-card vert">
+          <div class="stat-label">Commandes</div>
+          <div class="stat-value">12</div>
+          <div style="font-size:11px;color:var(--gris);"><span class="stat-change up">↑ 3 nouvelles</span></div>
+        </div>
+        <div class="stat-card bleu">
+          <div class="stat-label">Clients ce mois</div>
+          <div class="stat-value">284</div>
+          <div style="font-size:11px;color:var(--gris);"><span class="stat-change up">↑ +8%</span></div>
+        </div>
+        <div class="stat-card rouge">
+          <div class="stat-label">Stock faible</div>
+          <div class="stat-value">7</div>
+          <div style="font-size:11px;color:#C83030;">produits à réapprovisionner</div>
+        </div>
+      </div>
+
+      <div class="admin-table-card">
+        <div class="admin-table-header">
+          <span class="admin-table-title">Dernières commandes</span>
+          <a href="#" style="font-size:12px;color:var(--ocre);text-decoration:none;">Voir tout →</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Commande</th>
+              <th>Client</th>
+              <th>Produits</th>
+              <th>Zone</th>
+              <th>Montant</th>
+              <th>Statut</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#1042</strong></td>
+              <td>Aminata Diallo</td>
+              <td>Robe Wax, Sandales</td>
+              <td>Plateau</td>
+              <td><strong>33 500 FCFA</strong></td>
+              <td><span class="status-badge status-new">Nouvelle</span></td>
+              <td>Il y a 5 min</td>
+            </tr>
+            <tr>
+              <td><strong>#1041</strong></td>
+              <td>Moussa Ndiaye</td>
+              <td>Grand Boubou Bazin</td>
+              <td>Médina</td>
+              <td><strong>28 000 FCFA</strong></td>
+              <td><span class="status-badge status-processing">En préparation</span></td>
+              <td>Il y a 2h</td>
+            </tr>
+            <tr>
+              <td><strong>#1040</strong></td>
+              <td>Fatou Seck</td>
+              <td>Sac Raphia ×2, Chemise</td>
+              <td>Pikine</td>
+              <td><strong>33 500 FCFA</strong></td>
+              <td><span class="status-badge status-shipped">En livraison</span></td>
+              <td>Il y a 4h</td>
+            </tr>
+            <tr>
+              <td><strong>#1039</strong></td>
+              <td>Ibrahima Ba</td>
+              <td>Boubou Brodé</td>
+              <td>Almadies</td>
+              <td><strong>32 000 FCFA</strong></td>
+              <td><span class="status-badge status-delivered">Livrée</span></td>
+              <td>Hier 14h</td>
+            </tr>
+            <tr>
+              <td><strong>#1038</strong></td>
+              <td>Mariama Touré</td>
+              <td>Ensemble Wax 2 pièces</td>
+              <td>Guédiawaye</td>
+              <td><strong>22 400 FCFA</strong></td>
+              <td><span class="status-badge status-delivered">Livrée</span></td>
+              <td>Hier 10h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    if (b.textContent.toLowerCase().includes(name.substring(0,4))) b.classList.add('active');
+  });
+  window.scrollTo(0,0);
+}
+// fix nav active on load
+document.querySelector('.nav-btn').classList.add('active');
+</script>
+</body>
+</html>
