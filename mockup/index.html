@@ -56,11 +56,12 @@
     padding: 0 48px; height: 72px;
   }
   .logo {
-    font-family: 'Great Vibes', cursive; font-size: 32px; font-weight: 400;
-    color: var(--ocre-dark); text-decoration: none; letter-spacing: 1px;
-    line-height: 1;
+    text-decoration: none; display: flex; flex-direction: column;
+    align-items: center; line-height: 1; gap: 2px;
   }
-  .logo .logo-sub { font-family: var(--font-body); font-size: 11px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--gris); display: block; margin-top: -4px; }
+  .logo-crown { color: #C8A030; font-size: 18px; line-height: 1; }
+  .logo-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #3D2A10; letter-spacing: 1px; line-height: 1; }
+  .logo-sub { font-family: 'DM Sans', sans-serif; font-size: 9px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #C8A030; }
   .header-nav { display: flex; gap: 32px; list-style: none; }
   .header-nav a { font-size: 13px; color: var(--gris); text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
   .header-nav a:hover { color: var(--ocre); }
@@ -409,6 +410,104 @@
   /* ===================== ANIMATIONS ===================== */
   @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .page.active > * { animation: fadeIn 0.3s ease forwards; }
+
+  /* ===================== MOBILE RESPONSIVE ===================== */
+  @media (max-width: 768px) {
+
+    /* Header */
+    .site-header { padding: 0 16px; height: 60px; }
+    .header-nav { display: none; }
+    .header-actions { gap: 12px; }
+    .header-actions a { font-size: 12px; }
+
+    /* Page nav mockup */
+    .page-nav { flex-wrap: wrap; gap: 4px; padding: 6px 8px; }
+    .page-nav span { display: none; }
+    .nav-btn { padding: 4px 10px; font-size: 10px; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; height: auto; min-height: unset; }
+    .hero-left { padding: 48px 24px; }
+    .hero-title { font-size: 38px; }
+    .hero-right { height: 220px; }
+    .hero-stat { top: 16px; right: 16px; }
+    .hero-stat-num { font-size: 32px; }
+    .hero-badge { bottom: 16px; left: 16px; font-size: 14px; padding: 10px 16px; }
+    .hero-cta-group { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-outline { text-align: center; padding: 14px 24px; }
+
+    /* Strip */
+    .strip { font-size: 10px; padding: 10px 8px; }
+
+    /* Sections */
+    .section { padding: 40px 16px; }
+    .section-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .section-title { font-size: 28px; }
+
+    /* Categories */
+    .cat-grid { grid-template-columns: 1fr 1fr; }
+    .cat-card:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+    .cat-name { font-size: 18px !important; }
+
+    /* Products */
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .product-grid-3 { grid-template-columns: 1fr 1fr; }
+    .product-name { font-size: 14px; }
+    .product-price { font-size: 13px; }
+
+    /* Brand stats section */
+    .brand-section-grid { grid-template-columns: 1fr !important; gap: 32px; }
+    .brand-stats-grid { grid-template-columns: 1fr 1fr !important; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-desc { max-width: 100%; }
+
+    /* Shop layout */
+    .shop-layout { grid-template-columns: 1fr; padding: 16px; gap: 20px; }
+    .sidebar { display: none; }
+
+    /* Product detail */
+    .product-detail { grid-template-columns: 1fr; }
+    .product-info { padding: 24px 16px; }
+    .product-detail-name { font-size: 28px; }
+    .gallery-thumbs { padding: 8px 16px; }
+    .gallery-thumb { width: 56px; height: 70px; }
+
+    /* Cart */
+    .cart-layout { grid-template-columns: 1fr; padding: 16px; gap: 24px; }
+    .cart-title { font-size: 26px; }
+    .cart-item { grid-template-columns: 80px 1fr auto; gap: 12px; }
+    .cart-summary { position: static; }
+
+    /* Checkout */
+    .checkout-layout { grid-template-columns: 1fr; }
+    .checkout-form-side { padding: 24px 16px; border-right: none; border-bottom: 1px solid var(--gris-light); }
+    .checkout-summary-side { padding: 24px 16px; }
+    .form-row { grid-template-columns: 1fr; }
+    .checkout-steps { gap: 0; }
+    .step-label { display: none; }
+
+    /* Admin */
+    .admin-layout { grid-template-columns: 1fr; }
+    .admin-sidebar { display: none; }
+    .admin-content { padding: 16px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-value { font-size: 22px; }
+    table { font-size: 12px; }
+    th, td { padding: 10px 12px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 30px; }
+    .product-grid, .product-grid-3 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .cat-card:first-child { grid-column: span 1; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .cart-item { grid-template-columns: 64px 1fr; }
+    .cart-item-price-col { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -428,7 +527,11 @@
 <div class="page active" id="page-accueil">
 
   <header class="site-header">
-    <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+    <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
     <ul class="header-nav">
       <li><a href="#">Femme</a></li>
       <li><a href="#">Homme</a></li>
@@ -596,12 +699,12 @@
   </section>
 
   <!-- BRAND STRIP -->
-  <section style="background:var(--noir);padding:64px 48px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;">
+  <section class="brand-section-grid" style="background:var(--noir);padding:64px 48px;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;">
     <div>
       <p style="font-size:11px;letter-spacing:4px;color:var(--ocre);text-transform:uppercase;margin-bottom:16px;">Notre engagement</p>
       <h2 style="font-family:var(--font-display);font-size:42px;font-weight:300;color:white;line-height:1.2;">Mode africaine<br><em style="font-style:italic;color:var(--ocre-light);">authentique</em><br>& responsable</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div class="brand-stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       <div style="border-left:2px solid var(--ocre);padding-left:20px;">
         <div style="font-family:var(--font-display);font-size:36px;color:white;">100%</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;">Artisanat local</div>
@@ -624,7 +727,11 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+        <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
         <p class="footer-desc">Mode africaine authentique, livrée à Dakar et dans tout le Sénégal. Vêtements, chaussures et accessoires artisanaux.</p>
       </div>
       <div class="footer-col">
@@ -672,7 +779,11 @@
 <!-- ==================== PAGE CATALOGUE ==================== -->
 <div class="page" id="page-catalogue">
   <header class="site-header">
-    <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+    <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
     <ul class="header-nav">
       <li><a href="#" style="color:var(--ocre);">Femme</a></li>
       <li><a href="#">Homme</a></li>
@@ -842,7 +953,11 @@
 <!-- ==================== PAGE PRODUIT ==================== -->
 <div class="page" id="page-produit">
   <header class="site-header">
-    <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+    <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
     <ul class="header-nav">
       <li><a href="#">Femme</a></li><li><a href="#">Homme</a></li>
       <li><a href="#">Chaussures</a></li><li><a href="#">Accessoires</a></li>
@@ -931,7 +1046,11 @@
 <!-- ==================== PAGE PANIER ==================== -->
 <div class="page" id="page-panier">
   <header class="site-header">
-    <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+    <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
     <ul class="header-nav"><li><a href="#">Femme</a></li><li><a href="#">Homme</a></li><li><a href="#">Chaussures</a></li></ul>
     <div class="header-actions"><a href="#">Mon compte</a><a href="#">🛍 <span class="cart-badge">3</span></a></div>
   </header>
@@ -1028,7 +1147,11 @@
 <!-- ==================== PAGE CHECKOUT ==================== -->
 <div class="page" id="page-checkout">
   <header class="site-header">
-    <a href="#" class="logo">Montele<span class="logo-sub">Couture</span></a>
+    <a href="#" class="logo">
+  <span class="logo-crown">♛</span>
+  <span class="logo-name">Montele</span>
+  <span class="logo-sub">Couture</span>
+</a>
     <div style="font-size:13px;color:var(--gris);">Paiement sécurisé 🔒</div>
   </header>
 
