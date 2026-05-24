@@ -32,7 +32,7 @@ function astra_child_enqueue_styles() {
         'astra-child-css',
         get_stylesheet_uri(),
         array( 'astra-theme-css' ),
-        wp_get_theme()->get( 'Version' )
+        filemtime( get_stylesheet_directory() . '/style.css' )
     );
 }
 add_action( 'wp_enqueue_scripts', 'astra_child_enqueue_styles' );
@@ -180,7 +180,11 @@ add_action( 'woocommerce_email_after_order_table', 'astra_child_display_quartier
  */
 function astra_child_validate_quartier_checkout_field() {
 
-    if ( isset( $_POST['billing_quartier'] ) && '' === trim( $_POST['billing_quartier'] ) ) {
+    if ( ! isset( $_POST['woocommerce-process-checkout-nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['woocommerce-process-checkout-nonce'] ) ), 'woocommerce-process_checkout' ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['billing_quartier'] ) && '' === trim( wp_unslash( $_POST['billing_quartier'] ) ) ) {
         wc_add_notice(
             __( 'Veuillez indiquer votre quartier pour la livraison.', 'astra-child' ),
             'error'

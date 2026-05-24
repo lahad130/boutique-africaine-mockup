@@ -54,9 +54,6 @@ $shop_url  = home_url( '/' );
             outline: none;
             text-decoration: none;
         }
-        /* ===== TYPOGRAPHIE ===== */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
-
         /* ===== CONTENEUR PRINCIPAL ===== */
         .email-wrapper {
             background-color: #F5F5F3;
@@ -175,7 +172,7 @@ $shop_url  = home_url( '/' );
             letter-spacing: 0.08em;
             padding: 14px 28px;
             border-radius: 6px;
-            mso-padding-alt: 0;
+            mso-padding-alt: 14px 28px;
         }
 
         /* ===== RESPONSIVE ===== */
