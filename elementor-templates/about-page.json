@@ -1,0 +1,476 @@
+[
+  {
+    "id": "ap1b2c3d",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "80",
+        "right": "20",
+        "bottom": "80",
+        "left": "20",
+        "isLinked": false
+      },
+      "content_position": "middle"
+    },
+    "elements": [
+      {
+        "id": "ap4e5f6g",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": [
+          {
+            "id": "ap7h8i9j",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Notre Histoire",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 42
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ap0k1l2m",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#ffffff",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "ap3n4o5p",
+        "elType": "column",
+        "settings": {
+          "_column_size": 50,
+          "_padding": {
+            "unit": "px",
+            "top": "0",
+            "right": "30",
+            "bottom": "0",
+            "left": "0",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "ap6q7r8s",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"font-family:Inter, sans-serif; font-size:16px; line-height:1.8; color:#1A1A1A;\">Nous sommes une boutique sénégalaise spécialisée dans les vêtements et chaussures africains authentiques. Notre mission est de valoriser la mode africaine avec des créations de qualité, livrées directement chez vous à Dakar.</p>"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ap9t0u1v",
+        "elType": "column",
+        "settings": {
+          "_column_size": 50,
+          "_padding": {
+            "unit": "px",
+            "top": "0",
+            "right": "0",
+            "bottom": "0",
+            "left": "30",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "ap2w3x4y",
+            "elType": "widget",
+            "widgetType": "image",
+            "settings": {
+              "image": {
+                "url": "https://via.placeholder.com/600x400/E8E4DC/1A1A1A?text=Boutique+Africaine",
+                "id": ""
+              },
+              "image_size": "large",
+              "align": "center",
+              "caption_source": "none"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ap5z6a7b",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "ap8c9d0e",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": [
+          {
+            "id": "ap1f2g3h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Nos Valeurs",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 32
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "0",
+                "right": "0",
+                "bottom": "40",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ap4i5j6k",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "0",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "ap7l8m9n",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "ap0o1p2q",
+            "elType": "widget",
+            "widgetType": "icon",
+            "settings": {
+              "selected_icon": {
+                "library": "fa-solid",
+                "value": "fas fa-star"
+              },
+              "align": "center",
+              "primary_color": "#C8842A",
+              "size": {
+                "unit": "px",
+                "size": 40
+              }
+            }
+          },
+          {
+            "id": "ap3r4s5t",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Authenticité",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 20
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "15",
+                "right": "0",
+                "bottom": "10",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          },
+          {
+            "id": "ap6u7v8w",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"text-align:center; font-family:Inter, sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;\">Des créations africaines authentiques, sélectionnées avec soin pour leur qualité et leur représentativité culturelle.</p>"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ap9x0y1z",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "ap2a3b4c",
+            "elType": "widget",
+            "widgetType": "icon",
+            "settings": {
+              "selected_icon": {
+                "library": "fa-solid",
+                "value": "fas fa-gem"
+              },
+              "align": "center",
+              "primary_color": "#2D6A4F",
+              "size": {
+                "unit": "px",
+                "size": 40
+              }
+            }
+          },
+          {
+            "id": "ap5d6e7f",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Qualité",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 20
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "15",
+                "right": "0",
+                "bottom": "10",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          },
+          {
+            "id": "ap8g9h0i",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"text-align:center; font-family:Inter, sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;\">Des matières nobles et des finitions soignées pour des pièces qui durent et qui vous font honneur.</p>"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ap1j2k3l",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "ap4m5n6o",
+            "elType": "widget",
+            "widgetType": "icon",
+            "settings": {
+              "selected_icon": {
+                "library": "fa-solid",
+                "value": "fas fa-shipping-fast"
+              },
+              "align": "center",
+              "primary_color": "#C8842A",
+              "size": {
+                "unit": "px",
+                "size": 40
+              }
+            }
+          },
+          {
+            "id": "ap7p8q9r",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Livraison Rapide",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 20
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "15",
+                "right": "0",
+                "bottom": "10",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          },
+          {
+            "id": "ap0s1t2u",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"text-align:center; font-family:Inter, sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;\">Commandez aujourd'hui, recevez demain. Livraison rapide partout à Dakar en 24-48h.</p>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

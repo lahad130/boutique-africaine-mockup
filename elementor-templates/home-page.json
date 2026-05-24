@@ -1,0 +1,567 @@
+[
+  {
+    "id": "a1b2c3d4",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#1A1A1A",
+      "min_height": {
+        "unit": "px",
+        "size": 500
+      },
+      "layout": "full_width",
+      "content_position": "middle",
+      "padding": {
+        "unit": "px",
+        "top": "80",
+        "right": "20",
+        "bottom": "80",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "e5f6g7h8",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100,
+          "content_position": "middle"
+        },
+        "elements": [
+          {
+            "id": "i9j0k1l2",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Élégance Africaine",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 52
+              },
+              "typography_font_weight": "700",
+              "title_color": "#ffffff"
+            }
+          },
+          {
+            "id": "m3n4o5p6",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"text-align:center; color:#ffffff; font-family:Inter, sans-serif; font-size:18px;\">Vêtements et chaussures africains — Livraison à Dakar</p>",
+              "align": "center"
+            }
+          },
+          {
+            "id": "q7r8s9t0",
+            "elType": "widget",
+            "widgetType": "button",
+            "settings": {
+              "text": "Découvrir la boutique",
+              "link": {
+                "url": "/boutique/",
+                "is_external": false,
+                "nofollow": false
+              },
+              "align": "center",
+              "background_color": "#C8842A",
+              "button_text_color": "#ffffff",
+              "border_radius": {
+                "unit": "px",
+                "top": 4,
+                "right": 4,
+                "bottom": 4,
+                "left": 4,
+                "isLinked": true
+              },
+              "text_padding": {
+                "unit": "px",
+                "top": "15",
+                "right": "40",
+                "bottom": "15",
+                "left": "40",
+                "isLinked": false
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Inter",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 16
+              },
+              "typography_font_weight": "600"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "u1v2w3x4",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "y5z6a7b8",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": [
+          {
+            "id": "c9d0e1f2",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Nos Collections",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 36
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "0",
+                "right": "0",
+                "bottom": "40",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "g3h4i5j6",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "0",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "k7l8m9n0",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "o1p2q3r4",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Vêtements Femme",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 22
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A"
+            }
+          },
+          {
+            "id": "s5t6u7v8",
+            "elType": "widget",
+            "widgetType": "button",
+            "settings": {
+              "text": "Voir la collection",
+              "link": {
+                "url": "/categorie-produit/vetements-femme/",
+                "is_external": false,
+                "nofollow": false
+              },
+              "align": "center",
+              "background_color": "#C8842A",
+              "button_text_color": "#ffffff",
+              "border_radius": {
+                "unit": "px",
+                "top": 4,
+                "right": 4,
+                "bottom": 4,
+                "left": 4,
+                "isLinked": true
+              },
+              "text_padding": {
+                "unit": "px",
+                "top": "12",
+                "right": "24",
+                "bottom": "12",
+                "left": "24",
+                "isLinked": false
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Inter",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 14
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "w9x0y1z2",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "a3b4c5d6",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Vêtements Homme",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 22
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A"
+            }
+          },
+          {
+            "id": "e7f8g9h0",
+            "elType": "widget",
+            "widgetType": "button",
+            "settings": {
+              "text": "Voir la collection",
+              "link": {
+                "url": "/categorie-produit/vetements-homme/",
+                "is_external": false,
+                "nofollow": false
+              },
+              "align": "center",
+              "background_color": "#C8842A",
+              "button_text_color": "#ffffff",
+              "border_radius": {
+                "unit": "px",
+                "top": 4,
+                "right": 4,
+                "bottom": 4,
+                "left": 4,
+                "isLinked": true
+              },
+              "text_padding": {
+                "unit": "px",
+                "top": "12",
+                "right": "24",
+                "bottom": "12",
+                "left": "24",
+                "isLinked": false
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Inter",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 14
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "i1j2k3l4",
+        "elType": "column",
+        "settings": {
+          "_column_size": 33,
+          "background_background": "classic",
+          "background_color": "#ffffff",
+          "_padding": {
+            "unit": "px",
+            "top": "30",
+            "right": "30",
+            "bottom": "30",
+            "left": "30",
+            "isLinked": true
+          },
+          "border_border": "solid",
+          "border_width": {
+            "unit": "px",
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1",
+            "isLinked": true
+          },
+          "border_color": "#E8E4DC",
+          "border_radius": {
+            "unit": "px",
+            "top": 8,
+            "right": 8,
+            "bottom": 8,
+            "left": 8,
+            "isLinked": true
+          },
+          "_margin": {
+            "unit": "px",
+            "top": "0",
+            "right": "10",
+            "bottom": "0",
+            "left": "10",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "m5n6o7p8",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Chaussures",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 22
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A"
+            }
+          },
+          {
+            "id": "q9r0s1t2",
+            "elType": "widget",
+            "widgetType": "button",
+            "settings": {
+              "text": "Voir la collection",
+              "link": {
+                "url": "/categorie-produit/chaussures-femme/",
+                "is_external": false,
+                "nofollow": false
+              },
+              "align": "center",
+              "background_color": "#C8842A",
+              "button_text_color": "#ffffff",
+              "border_radius": {
+                "unit": "px",
+                "top": 4,
+                "right": 4,
+                "bottom": 4,
+                "left": 4,
+                "isLinked": true
+              },
+              "text_padding": {
+                "unit": "px",
+                "top": "12",
+                "right": "24",
+                "bottom": "12",
+                "left": "24",
+                "isLinked": false
+              },
+              "typography_typography": "custom",
+              "typography_font_family": "Inter",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 14
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "u3v4w5x6",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#FAFAF8",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "y7z8a9b0",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": [
+          {
+            "id": "c1d2e3f4",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Nouveautés",
+              "align": "center",
+              "typography_typography": "custom",
+              "typography_font_family": "Playfair Display",
+              "typography_font_size": {
+                "unit": "px",
+                "size": 36
+              },
+              "typography_font_weight": "700",
+              "title_color": "#1A1A1A",
+              "_margin": {
+                "unit": "px",
+                "top": "0",
+                "right": "0",
+                "bottom": "40",
+                "left": "0",
+                "isLinked": false
+              }
+            }
+          },
+          {
+            "id": "g5h6i7j8",
+            "elType": "widget",
+            "widgetType": "shortcode",
+            "settings": {
+              "shortcode": "[recent_products limit=\"4\" columns=\"4\"]"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "k9l0m1n2",
+    "elType": "section",
+    "settings": {
+      "background_background": "classic",
+      "background_color": "#C8842A",
+      "padding": {
+        "unit": "px",
+        "top": "20",
+        "right": "20",
+        "bottom": "20",
+        "left": "20",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "o3p4q5r6",
+        "elType": "column",
+        "settings": {
+          "_column_size": 100
+        },
+        "elements": [
+          {
+            "id": "s7t8u9v0",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"text-align:center; color:#ffffff; font-family:Inter, sans-serif; font-size:16px; font-weight:600; margin:0;\">🚚 Livraison à Dakar en 24-48h &nbsp;·&nbsp; 📱 Paiement Wave &amp; Orange Money &nbsp;·&nbsp; ✅ Retours faciles</p>",
+              "align": "center"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
